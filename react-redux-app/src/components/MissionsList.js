@@ -14,7 +14,9 @@ const MissionsList = (props) => {
             {props.error ? <p>{props.error}</p>: null}
             {props.missions.map((mission) => (
                     <div>
-                        <h3>{mission.mission_name}</h3>
+                        <h3>Mission: {mission.mission_name}</h3>
+                        <h4>Manufacturer: {mission.manufacturers}</h4>
+                        <p>{mission.description}</p>
                     </div>
             ))}
         </div>
