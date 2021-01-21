@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import CryptoList from './components/CryptoList'
+import BitcoinLogo from './images/Bitcoin-Logo.png'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>What Cryptocurrency Do You Want To See Today?</h1>
+      <img width = '85'src = {BitcoinLogo} alt = ''/>
+      <CryptoList />
     </div>
   );
 }
 
 export default App;
+ 
