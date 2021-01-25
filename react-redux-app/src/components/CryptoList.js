@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { getCrypto } from '../actions';
-
+import BitcoinLoading from '../images/bitcoin-gif-ashley-liu.gif'
+import './CryptoList.css'
 
 const CryptoList = ({isFetching, error, getCrypto, cryptos}) => {
 
@@ -16,31 +17,45 @@ const CryptoList = ({isFetching, error, getCrypto, cryptos}) => {
     setKeyword(e.target.value)
   }
 
+//   const handleSubmit = (e) => {
+//     setKeyword(e.target.value)
+//   }
+
     return (
         <div>
-             {isFetching ? <h2>Working on getting your Cryptos :)</h2> : <div></div>}
-             {error ? <h2>Oh no we have a 404 error</h2> : <div></div>}
-             <form>
+            <section className = 'formSection'>
+            <div className = 'formDiv'>
+             <form  className = 'form'>
                  <input
                     type = 'text'
                     onChange = {handleChange}
+                    placeholder = 'Crypto...'
                  >
                  </input>
              </form>
              <button onClick = {handleClick}>Search</button>
-            { 
-                cryptos ? cryptos.map((crypto) => (
-                    crypto.name.indexOf(keyword) === -1 ? '' :  
-                    <div key = {crypto.id}>
-                        <img width = '100'src = {crypto.image} alt = ''/>
-                        <h1>{crypto.name}</h1>
-                        <h2>{crypto.symbol}</h2>
-                        <h3>1 {crypto.name} equals ${crypto.current_price}</h3>
-                    </div>
-                )) : ''
-            }
+             </div> {/* Closes .formDiv */}
+             </section> {/* closes .formSection */}
 
-        </div>
+            <div className = 'loadingImgDiv'>
+                {isFetching ? <img className = 'loadingImg' src = {BitcoinLoading} alt = ''/> : <div></div>}
+                {error ? <h2>Oh no we have a 404 error</h2> : <div></div>}
+             </div>
+
+            <section className = 'cardSection'>
+                {cryptos ? cryptos.map((crypto) => (
+                    crypto.name.indexOf(keyword) === -1 ? '' :  
+                    <div className = 'cardDiv' key = {crypto.id}>
+                            <img className = 'cardImg' src = {crypto.image} alt = ''/>
+                        <div className = 'cardInfoDiv'>
+                            <h2>{crypto.name}</h2>
+                            <h3>{crypto.symbol}</h3>
+                            <h4>1 {crypto.name} equals ${crypto.current_price}</h4>
+                        </div>
+                    </div>
+                )) : ''}
+            </section>
+            </div>
     )
 }
 
