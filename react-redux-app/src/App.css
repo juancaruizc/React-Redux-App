@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.headerImg {
+  width: 6%;
+  height: 10%;
+}
+
+h1 {
+  color: white;
+}
+
+.builtDiv {
+  text-align: right;
+  color: white;
+}
